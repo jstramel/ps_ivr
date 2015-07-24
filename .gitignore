@@ -1,0 +1,9 @@
+#Ignore com files
+com/constants.php
+com/Database.php
+
+# Ignore testing files
+/testing
+
+# Others
+sms/sms_outbound_campaign.php
