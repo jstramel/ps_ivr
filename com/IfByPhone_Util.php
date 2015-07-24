@@ -40,7 +40,8 @@ class IfByPhone_Util {
 			$single_bar_pos = strpos($value, '|', $cursor_pos);
 			// position of the next double bar (end of value)
 			$double_bar_pos = strpos($value, '||', $cursor_pos);
-			// at the end of the string the double bar will be absent and return false.  Then set the $double_bar_pos to the entire length of $value
+			// at the end of the string the double bar will be absent and return false.
+			// Then set the $double_bar_pos to the entire length of $value
 			if ($double_bar_pos == false) {
 				$double_bar_pos = strlen($value);
 			}
@@ -115,7 +116,8 @@ class IfByPhone_Util {
 		$msg = self::convertCharactersToHTML($msg);
 
 		// Create the URL string to execute
-		$sms = $url . 'api_key=' . self::$API_KEY . '&action=' . $action . '&to=' . $to . '&from=' . self::$IVR_PHONE_NUM . '&message=' . $msg;
+		$sms = $url . 'api_key=' . self::$API_KEY . '&action=' . $action . '&to=' . $to . '&from=' .
+			self::$IVR_PHONE_NUM . '&message=' . $msg;
 
 		// Variable holds the resulting XML from the call.  file_get_contents() executes the call.
 		$result = file_get_contents($sms);
@@ -136,7 +138,8 @@ class IfByPhone_Util {
 			$sms_datetime = strtotime($timestamp);
 			$sms_date = date('n/j/Y', $sms_datetime);
 			$sms_time = date('g:i a', $sms_datetime);
-			$sms_msg = $employee_name . " " . $job_stage . " ". $serviceCategory . " job: " . $job_name . " on " . $sms_date . " at " . $sms_time;
+			$sms_msg = $employee_name . " " . $job_stage . " ". $serviceCategory . " job: " . $job_name . " on " .
+				$sms_date . " at " . $sms_time;
 			foreach ($results as $result){
 				self::createSMS($result['phone'],$sms_msg);
 				sleep(3);

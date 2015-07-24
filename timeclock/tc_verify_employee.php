@@ -9,7 +9,7 @@ require ('../com/Database.php');
 try {
 	$conn = Database::getDB();
 	$results = $conn->query("CALL verify_employee('$employee_id', '$passcode', @isValid, @employee_pkID,
-													@remotePunch, @ivrAccess, @isActive, @employee_name, @employee_phone)");
+		@remotePunch, @ivrAccess, @isActive, @employee_name, @employee_phone)");
 	$results = $conn->query("SELECT @isValid, @employee_pkID, @remotePunch, @isActive, @employee_phone");
 
 	foreach ( $results as $result ) {
@@ -45,7 +45,7 @@ try {
 
 		// if the employee is valid, and has access, record the timeclock punch, send to survo confirming punch
 		$query_timeclock = "INSERT into timeclock (employee_pk_id, punchDateTime) VALUES ('" . $employee_id . "','" .
-												$timestamp . "')";
+			$timestamp . "')";
 		$conn->query($query_timeclock);
 
 

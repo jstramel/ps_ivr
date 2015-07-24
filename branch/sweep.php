@@ -48,7 +48,8 @@ if ($sweep == 'NA' || $trashcans == 'NA' || $handpick == 'NA') {
 	exit();
 }
 
-// If user entered "No" (case sensitive) for all options, send them to the IVR error message: (4. Sweep - All NO Answers Error) and reprompt.
+// If user entered "No" (case sensitive) for all options, send them to the IVR error message:
+// (4. Sweep - All NO Answers Error) and reprompt.
 // Not all answers can be "No".
 if ($sweep == 'No' && $trashcans == 'No' && $handpick == 'No') {
 	echo "<action>

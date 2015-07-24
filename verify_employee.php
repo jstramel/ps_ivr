@@ -17,7 +17,8 @@ if ($employee_id == 'NA' || $passcode == 'NA'){
 
 try {
 	$conn = Database::getDB();
-	$results = $conn->query("CALL verify_employee('$employee_id', '$passcode', @isValid, @employee_pkID, @remotePunch, @ivrAccess, @isActive, @employee_name)");
+	$results = $conn->query("CALL verify_employee('$employee_id', '$passcode', @isValid, @employee_pkID,
+		@remotePunch, @ivrAccess, @isActive, @employee_name)");
 	$results = $conn->query("SELECT @isValid, @employee_pkID, @ivrAccess, @isActive, @employee_name");
 	foreach ( $results as $result ) {
 		if (!$result["@isValid"]) {
@@ -48,7 +49,8 @@ try {
 
 		// for valid combination, check to see if there is an open job
 
-		$open_event_check = $conn->query("CALL proc_checkForOpenEvent('$employee_id', @event_pk_id, @serviceCategory, @name, @survo, @job_pk_id)");
+		$open_event_check = $conn->query("CALL proc_checkForOpenEvent('$employee_id', @event_pk_id, @serviceCategory,
+			@name, @survo, @job_pk_id)");
 		$open_event_check = $conn->query("SELECT @event_pk_id, @serviceCategory, @name, @survo, @job_pk_id");
 
 		// Create instance of Utility to clean data
@@ -68,7 +70,9 @@ try {
 								<user_parameters>
 									<name>" . $name_clean . "</name>
 								</user_parameters>
-								<p_t>employee_id|" . $employee_id . "||event_id|" . $checks["@event_pk_id"] . "||serviceCategory|" . $checks["@serviceCategory"] . "||company|" . $name_clean . "||employee_name|" . $employee_name . "||job_pk_id|" . $checks["@job_pk_id"] . "</p_t>
+								<p_t>employee_id|" . $employee_id . "||event_id|" . $checks["@event_pk_id"] . "||serviceCategory|" .
+									$checks["@serviceCategory"] . "||company|" . $name_clean . "||employee_name|" . $employee_name .
+									"||job_pk_id|" . $checks["@job_pk_id"] . "</p_t>
 							</parameters>
 						</action>";
 			} else {

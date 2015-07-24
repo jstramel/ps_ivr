@@ -60,7 +60,7 @@ if ($plow == 'No' && $shovel == 'No' && $salt == 'No') {
 
 // Query statement
 $query = "CALL proc_endSnowJob('$event_id', '$timestamp', '$caller_id', '$session_id', '$message',
-					'$plow', '$shovel', '$salt', @confirmation)";
+	'$plow', '$shovel', '$salt', @confirmation)";
 
 // Connect to the database
 $conn = Database::getDB();

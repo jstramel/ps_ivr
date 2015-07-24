@@ -56,7 +56,7 @@ if ($lawn == 'No' && $herbicid == 'No' && $fertilize == 'No' && $prune == 'No') 
 
 // Query statement
 $query = "CALL proc_endLawnJob('$event_id', '$timestamp', '$caller_id', '$session_id', '$message',
-					'$lawn', '$herbicide', '$fertilize', '$prune', @confirmation)";
+	'$lawn', '$herbicide', '$fertilize', '$prune', @confirmation)";
 
 
 // Connect to the database
